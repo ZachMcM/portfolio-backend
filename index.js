@@ -29,6 +29,11 @@ app.get('/', async (req, res) => {
     res.json(repoList)
 })
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', '*')
+    next()
+})
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`)
