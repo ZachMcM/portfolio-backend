@@ -45,13 +45,11 @@ app.get('/stats', async (req, res) => {
     const repos = await getRepos()
     const langauges = []
     repos.forEach(repo => {
-        if (repo.language) {
-            const language = langauges.find(language => language.name === repo.language)
-            if (language) {
-                language.count++
-            } else {
-                langauges.push({name: repo.language, count: 1})
-            }
+        const language = langauges.find(language => language.name === repo.language)
+        if (language) {
+            language.count++
+        } else {
+            langauges.push({name: repo.language, count: 1})
         }
     })
     res.json({
