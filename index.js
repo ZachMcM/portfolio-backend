@@ -1,4 +1,5 @@
 require('dotenv').config()
+const port = process.env.PORT || 8000
 
 const { Octokit } = require('octokit')
 const octokit = new Octokit({
@@ -29,7 +30,7 @@ app.get('/', async (req, res) => {
 })
 
 
-app.listen(8000, () => {
-    console.log('Listening on port 8000')
+app.listen(port, () => {
+    console.log(`Listening on port ${port}...`)
 })
 
