@@ -56,10 +56,7 @@ app.get('/stats', async (req, res) => {
     langauges.forEach((language, i) => {
         language.percent = `${Math.round(language.count / repos.length * 100)}%`
     })
-    res.json({
-        langauges: langauges,
-        total: repos.length
-    })
+    res.json(langauges)
 })
 
 app.listen(port, () => {
