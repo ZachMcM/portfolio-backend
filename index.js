@@ -52,6 +52,10 @@ app.get('/stats', async (req, res) => {
             langauges.push({name: repo.language, count: 1})
         }
     })
+    langauges.sort((a, b) => b.count - a.count)
+    langauges.forEach((language, i) => {
+        language.percent = `${Math.round(language.count / repos.length * 100)}%`
+    })
     res.json({
         langauges: langauges,
         total: repos.length
@@ -59,6 +63,7 @@ app.get('/stats', async (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Listening on port ${port}...`)
+    console.log(`Server started`)
+    console.log(`Listening on port http://localhost:${port}`)
 })
 
