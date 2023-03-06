@@ -54,7 +54,7 @@ app.get('/stats', async (req, res) => {
     })
     langauges.sort((a, b) => b.count - a.count)
     langauges.forEach((language, i) => {
-        language.percent = `${Math.round(language.count / repos.length * 100)}%`
+        language.percent = Math.round(language.count / repos.length * 100)
     })
     res.json(langauges)
 })
